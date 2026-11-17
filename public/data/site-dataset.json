@@ -1,0 +1,259 @@
+{
+  "meta": {
+    "version": "1.2",
+    "description": "Demo/reference dataset for the Nutri static site: foods, MET exercises, activity levels, and condition-based food exclusions. Values are approximate; not for clinical use.",
+    "units": {
+      "foodBase": "per 100 g unless servingLabel says otherwise",
+      "macros": "grams"
+    },
+    "filteringHowTo": {
+      "rule": "For a chosen dietaryConditions[].id, EXCLUDE a food if ANY applies: (1) food.id is listed in excludeFoodIds, (2) food.category is in excludeCategories, (3) food.tags intersects excludeTags.",
+      "disclaimer": "Educational guidance only; not a substitute for professional diagnosis or treatment."
+    },
+    "tagDefinitions": {
+      "highSugar": "High free/added sugars or candy-like product",
+      "concentratedSweet": "Dessert / concentrated sweet",
+      "addedSugarProduct": "Typical added-sugar snack or bar",
+      "refinedCarb": "Refined starch (white bread, regular pasta, etc.)",
+      "highStarchCarb": "Starchy carb that can spike glucose if portions are large",
+      "naturalSugar": "Whole fruit sugars (portion still matters for diabetes)",
+      "highSodium": "Often high salt (especially canned/processed)",
+      "highSaturatedFat": "Significant saturated fat",
+      "gluten": "Contains gluten (wheat/barley/rye typical)",
+      "glutenRiskOats": "Oats may be cross-contaminated unless certified GF",
+      "lactose": "Contains lactose (milk sugar)",
+      "dairy": "Animal milk product",
+      "acidic": "Relatively acidic (may bother reflux in some people)",
+      "highPurineModerate": "Moderate purines (relevant for gout in some diets)",
+      "highPotassium": "Relatively high potassium (CKD caution varies by stage)",
+      "highOxalate": "Oxalate-rich (some kidney stone diets limit these)",
+      "migraineTrigger": "Common self-reported migraine triggers (demo, not universal)",
+      "tyramineRich": "Tyramine (aged cheese; relevant for some migraines / MAOI meds)",
+      "histamineRisk": "Higher histamine risk (canned fish, aged cheese — demo)",
+      "fodmapHeavy": "Higher FODMAP load for IBS demo (legumes, some fruits)",
+      "goitrogenLight": "Goitrogens (crucifers; usually fine cooked; demo flag)",
+      "calciumRich": "Calcium-rich dairy (can affect non-heme iron absorption if same meal)",
+      "tanninPolyphenol": "Tannins/polyphenols (tea — can reduce iron absorption)"
+    }
+  },
+  "activityLevels": [
+    { "value": 1.2, "label": "Sedentary", "hint": "Little or no exercise" },
+    { "value": 1.375, "label": "Light", "hint": "Light exercise 1–3 days/week" },
+    { "value": 1.55, "label": "Moderate", "hint": "Moderate exercise 3–5 days/week" },
+    { "value": 1.725, "label": "Active", "hint": "Hard exercise 6–7 days/week" },
+    { "value": 1.9, "label": "Very active", "hint": "Very hard exercise or physical job" }
+  ],
+  "foods": [
+    { "id": "f001", "name": "Chicken breast, skinless grilled", "category": "protein", "kcal": 165, "proteinG": 31, "carbsG": 0, "fatG": 3.6, "tags": [] },
+    { "id": "f002", "name": "Egg, whole boiled", "category": "protein", "servingLabel": "1 large ~50g", "kcal": 155, "proteinG": 13, "carbsG": 1.1, "fatG": 11, "tags": ["highSaturatedFat"] },
+    { "id": "f003", "name": "Greek yogurt, plain low-fat", "category": "dairy", "kcal": 73, "proteinG": 9.9, "carbsG": 3.9, "fatG": 1.9, "tags": ["dairy", "lactose", "calciumRich"] },
+    { "id": "f004", "name": "Cottage cheese, low-fat", "category": "dairy", "kcal": 72, "proteinG": 12, "carbsG": 3.4, "fatG": 1, "tags": ["dairy", "lactose", "highSodium", "calciumRich"] },
+    { "id": "f005", "name": "Tuna canned in water", "category": "protein", "kcal": 116, "proteinG": 26, "carbsG": 0, "fatG": 0.8, "tags": ["highSodium", "highPurineModerate", "histamineRisk"] },
+    { "id": "f006", "name": "Salmon, baked", "category": "protein", "kcal": 206, "proteinG": 22, "carbsG": 0, "fatG": 13, "tags": ["highPurineModerate"] },
+    { "id": "f007", "name": "Lentils, cooked", "category": "legume", "kcal": 116, "proteinG": 9, "carbsG": 20, "fatG": 0.4, "tags": ["highStarchCarb", "legume", "fodmapHeavy", "highPotassium"] },
+    { "id": "f008", "name": "Chickpeas, cooked", "category": "legume", "kcal": 164, "proteinG": 8.9, "carbsG": 27, "fatG": 2.6, "tags": ["highStarchCarb", "legume", "fodmapHeavy", "highPotassium"] },
+    { "id": "f009", "name": "Tofu, firm", "category": "plant", "kcal": 144, "proteinG": 17, "carbsG": 3, "fatG": 9, "tags": [] },
+    { "id": "f010", "name": "Oats, dry rolled", "category": "grain", "kcal": 389, "proteinG": 17, "carbsG": 66, "fatG": 7, "tags": ["glutenRiskOats", "highStarchCarb"] },
+    { "id": "f011", "name": "Brown rice, cooked", "category": "grain", "kcal": 112, "proteinG": 2.3, "carbsG": 24, "fatG": 0.9, "tags": ["highStarchCarb"] },
+    { "id": "f012", "name": "Whole wheat bread", "category": "grain", "kcal": 247, "proteinG": 13, "carbsG": 41, "fatG": 4.2, "tags": ["gluten", "refinedCarb"] },
+    { "id": "f013", "name": "Sweet potato, baked", "category": "veg", "kcal": 90, "proteinG": 2, "carbsG": 21, "fatG": 0.1, "tags": ["highStarchCarb", "highPotassium"] },
+    { "id": "f014", "name": "Broccoli, steamed", "category": "veg", "kcal": 35, "proteinG": 2.4, "carbsG": 7, "fatG": 0.4, "tags": ["goitrogenLight", "fodmapHeavy"] },
+    { "id": "f015", "name": "Spinach, raw", "category": "veg", "kcal": 23, "proteinG": 2.9, "carbsG": 3.6, "fatG": 0.4, "tags": ["highPotassium", "highOxalate", "goitrogenLight"] },
+    { "id": "f016", "name": "Banana", "category": "fruit", "servingLabel": "1 medium ~118g", "kcal": 89, "proteinG": 1.1, "carbsG": 23, "fatG": 0.3, "tags": ["naturalSugar", "highStarchCarb", "highPotassium", "fodmapHeavy"] },
+    { "id": "f017", "name": "Apple, with skin", "category": "fruit", "kcal": 52, "proteinG": 0.3, "carbsG": 14, "fatG": 0.2, "tags": ["naturalSugar", "fodmapHeavy"] },
+    { "id": "f018", "name": "Orange", "category": "fruit", "kcal": 47, "proteinG": 0.9, "carbsG": 12, "fatG": 0.1, "tags": ["naturalSugar", "acidic", "migraineTrigger", "fodmapHeavy"] },
+    { "id": "f019", "name": "Avocado", "category": "fat", "kcal": 160, "proteinG": 2, "carbsG": 9, "fatG": 15, "tags": ["highPotassium"] },
+    { "id": "f020", "name": "Almonds", "category": "fat", "kcal": 579, "proteinG": 21, "carbsG": 22, "fatG": 50, "tags": ["highOxalate", "fodmapHeavy"] },
+    { "id": "f021", "name": "Olive oil", "category": "fat", "kcal": 884, "proteinG": 0, "carbsG": 0, "fatG": 100, "tags": [] },
+    { "id": "f022", "name": "Skim milk", "category": "dairy", "kcal": 34, "proteinG": 3.4, "carbsG": 5, "fatG": 0.1, "tags": ["dairy", "lactose", "calciumRich"] },
+    { "id": "f023", "name": "Cheddar cheese", "category": "dairy", "kcal": 402, "proteinG": 23, "carbsG": 1.3, "fatG": 33, "tags": ["dairy", "lactose", "highSodium", "highSaturatedFat", "calciumRich", "tyramineRich", "histamineRisk", "migraineTrigger"] },
+    { "id": "f024", "name": "Ground beef 90% lean, cooked", "category": "protein", "kcal": 250, "proteinG": 26, "carbsG": 0, "fatG": 15, "tags": ["highSaturatedFat", "highPurineModerate"] },
+    { "id": "f025", "name": "Turkey breast, roasted", "category": "protein", "kcal": 135, "proteinG": 30, "carbsG": 0, "fatG": 1, "tags": [] },
+    { "id": "f026", "name": "Pasta, cooked", "category": "grain", "kcal": 131, "proteinG": 5, "carbsG": 25, "fatG": 1.1, "tags": ["gluten", "refinedCarb", "highStarchCarb"] },
+    { "id": "f027", "name": "Quinoa, cooked", "category": "grain", "kcal": 120, "proteinG": 4.4, "carbsG": 21, "fatG": 1.9, "tags": ["highStarchCarb"] },
+    { "id": "f028", "name": "Hummus", "category": "snack", "kcal": 177, "proteinG": 8, "carbsG": 14, "fatG": 10, "tags": ["legume", "fodmapHeavy"] },
+    { "id": "f029", "name": "Dark chocolate 70%", "category": "snack", "kcal": 598, "proteinG": 7.8, "carbsG": 46, "fatG": 43, "tags": ["highSugar", "concentratedSweet", "addedSugarProduct", "migraineTrigger", "histamineRisk"] },
+    { "id": "f030", "name": "Protein bar (avg fortified)", "category": "snack", "servingLabel": "1 bar ~60g", "kcal": 400, "proteinG": 20, "carbsG": 40, "fatG": 12, "tags": ["highSugar", "addedSugarProduct", "refinedCarb"] },
+    { "id": "f031", "name": "Black tea, brewed (unsweetened)", "category": "beverage", "servingLabel": "~240 ml", "kcal": 2, "proteinG": 0, "carbsG": 0.5, "fatG": 0, "tags": ["tanninPolyphenol", "acidic"] }
+  ],
+  "dietaryConditions": [
+    {
+      "id": "diabetes_type2",
+      "name": "Type 2 diabetes",      "excludeTags": ["highSugar", "concentratedSweet", "addedSugarProduct", "refinedCarb"],
+      "excludeCategories": [],
+      "excludeFoodIds": ["f029", "f030"],
+      "note": "Removes sweets/chocolate/bars, added-sugar products, and refined bread/pasta. Savory snacks like hummus stay. Whole fruits stay unless you switch to diabetes_type2_strict_carbs."
+    },
+    {
+      "id": "diabetes_type2_strict_carbs",
+      "name": "Type 2 diabetes (stricter carbs & fruit)",      "excludeTags": ["highSugar", "concentratedSweet", "addedSugarProduct", "refinedCarb", "highStarchCarb", "naturalSugar"],
+      "excludeCategories": [],
+      "excludeFoodIds": ["f029", "f030"],
+      "note": "Also excludes starchy sides (rice, potato, oats, legumes as tagged) and whole fruits in this demo list."
+    },
+    {
+      "id": "hypertension",
+      "name": "High blood pressure",      "excludeTags": ["highSodium"],
+      "excludeCategories": [],
+      "excludeFoodIds": [],
+      "note": "Excludes items tagged high-sodium (e.g. canned tuna, cottage cheese, cheddar)."
+    },
+    {
+      "id": "celiac_gluten_free",
+      "name": "Celiac disease / gluten sensitivity",      "excludeTags": ["gluten", "glutenRiskOats"],
+      "excludeCategories": [],
+      "excludeFoodIds": [],
+      "note": "Excludes gluten grains and non-certified oats in this demo tagging."
+    },
+    {
+      "id": "dyslipidemia",
+      "name": "High blood lipids (LDL)",      "excludeTags": ["highSaturatedFat"],
+      "excludeCategories": [],
+      "excludeFoodIds": ["f023", "f024"],
+      "note": "Excludes items tagged high in saturated fat; explicit IDs cover cheese and ground beef."
+    },
+    {
+      "id": "lactose_intolerance",
+      "name": "Lactose intolerance",      "excludeTags": ["lactose"],
+      "excludeCategories": ["dairy"],
+      "excludeFoodIds": [],
+      "note": "Excludes dairy and lactose-tagged items."
+    },
+    {
+      "id": "gerd_reflux_caution",
+      "name": "Acid reflux (GERD)",      "excludeTags": ["acidic", "highSaturatedFat"],
+      "excludeCategories": [],
+      "excludeFoodIds": ["f029", "f023"],
+      "note": "Demo only: acidic fruit, chocolate, very fatty cheese patterns; real triggers vary."
+    },
+    {
+      "id": "gout_hyperuricemia",
+      "name": "Gout",      "excludeTags": ["highPurineModerate"],
+      "excludeCategories": [],
+      "excludeFoodIds": ["f024"],
+      "note": "Flags moderate-purine fish/meat and canned tuna in this demo; real limits depend on attacks/meds."
+    },
+    {
+      "id": "ckd_hyperkalemia_caution",
+      "name": "Kidney disease (high potassium caution)",      "excludeTags": ["highPotassium"],
+      "excludeCategories": [],
+      "excludeFoodIds": [],
+      "note": "Many CKD diets restrict potassium only at certain stages/labs — this is a teaching filter only."
+    },
+    {
+      "id": "kidney_stones_calcium_oxalate",
+      "name": "Kidney stones",      "excludeTags": ["highOxalate"],
+      "excludeCategories": [],
+      "excludeFoodIds": [],
+      "note": "Not all stone formers need the same diet; many factors (fluids, calcium timing) matter."
+    },
+    {
+      "id": "migraine_diet_triggers_demo",
+      "name": "Migraine",      "excludeTags": ["migraineTrigger", "tyramineRich", "histamineRisk"],
+      "excludeCategories": [],
+      "excludeFoodIds": ["f029"],
+      "note": "Triggers are highly individual; chocolate/citrus/aged cheese are frequent self-reports."
+    },
+    {
+      "id": "ibs_fodmap_heavy_demo",
+      "name": "Irritable bowel (IBS)",      "excludeTags": ["fodmapHeavy"],
+      "excludeCategories": [],
+      "excludeFoodIds": [],
+      "note": "Real low-FODMAP care is phased/reintroduction; this only tags heavier items in the list."
+    },
+    {
+      "id": "histamine_intolerance_demo",
+      "name": "Histamine intolerance",      "excludeTags": ["histamineRisk"],
+      "excludeCategories": [],
+      "excludeFoodIds": [],
+      "note": "Aged cheese, canned fish, chocolate flagged; real sensitivity varies a lot."
+    },
+    {
+      "id": "nafld_fatty_liver_demo",
+      "name": "Fatty liver (NAFLD)",      "excludeTags": ["highSugar", "concentratedSweet", "addedSugarProduct", "refinedCarb", "highSaturatedFat"],
+      "excludeCategories": [],
+      "excludeFoodIds": ["f029", "f030"],
+      "note": "Broad metabolic pattern demo; clinical plans are individualized."
+    },
+    {
+      "id": "pcos_insulin_resistance_demo",
+      "name": "PCOS",      "excludeTags": ["highSugar", "concentratedSweet", "addedSugarProduct", "refinedCarb"],
+      "excludeCategories": [],
+      "excludeFoodIds": ["f029", "f030"],
+      "note": "Similar to limiting high-GI added sugars/refined starches in many counseling approaches."
+    },
+    {
+      "id": "heart_failure_sodium_demo",
+      "name": "Heart failure",      "excludeTags": ["highSodium"],
+      "excludeCategories": [],
+      "excludeFoodIds": [],
+      "note": "Often overlaps with hypertension salt limits; fluid limits are separate in real care."
+    },
+    {
+      "id": "iron_deficiency_absorption_demo",
+      "name": "Iron deficiency anemia",      "excludeTags": ["tanninPolyphenol"],
+      "excludeCategories": [],
+      "excludeFoodIds": ["f031"],
+      "note": "Tea/polyphenols can reduce non-heme iron absorption if taken with iron-rich meals. Calcium-rich dairy can too when paired — counsel timing separately; not all dairy is excluded here."
+    },
+    {
+      "id": "hypothyroid_goitrogen_demo",
+      "name": "Hypothyroidism",      "excludeTags": ["goitrogenLight"],
+      "excludeCategories": [],
+      "excludeFoodIds": [],
+      "note": "Crucifers are usually fine in normal cooked portions; iodine/meds dominate real management."
+    }
+  ],
+  "exercisesMet": [
+    { "id": "e001", "name": "Walking slow 3 km/h", "met": 2 },
+    { "id": "e002", "name": "Walking 5 km/h", "met": 3.5 },
+    { "id": "e003", "name": "Walking brisk 6.5 km/h", "met": 4.3 },
+    { "id": "e004", "name": "Cycling leisure <16 km/h", "met": 4 },
+    { "id": "e005", "name": "Cycling moderate ~19 km/h", "met": 6 },
+    { "id": "e006", "name": "Cycling vigorous", "met": 8 },
+    { "id": "e007", "name": "Swimming light/moderate", "met": 6 },
+    { "id": "e008", "name": "Swimming vigorous", "met": 9.8 },
+    { "id": "e009", "name": "Strength training general", "met": 5 },
+    { "id": "e010", "name": "Circuit training", "met": 8 },
+    { "id": "e011", "name": "Running 8 km/h", "met": 9.8 },
+    { "id": "e012", "name": "Running 10 km/h", "met": 11.5 },
+    { "id": "e013", "name": "Elliptical moderate", "met": 5 },
+    { "id": "e014", "name": "Rowing moderate", "met": 7 },
+    { "id": "e015", "name": "Yoga Hatha", "met": 2.5 }
+  ],
+  "heartRateZonesPercent": [
+    { "label": "Zone 1–2 (easy)", "share": 45 },
+    { "label": "Zone 3 (tempo)", "share": 35 },
+    { "label": "Zone 4–5 (hard)", "share": 20 }
+  ],
+  "demoUsersTemplate": {
+    "comment": "Shape matches nutri_auth_users items in auth.js. Use only for local testing; change passwords.",
+    "example": [
+      {
+        "email": "demo@nutri.local",
+        "password": "demo123",
+        "provider": "local",
+        "createdAt": "2026-04-01T12:00:00.000Z",
+        "profile": {
+          "name": "Demo User",
+          "email": "demo@nutri.local",
+          "age": 28,
+          "gender": "female",
+          "heightCm": 165,
+          "weightKg": 62,
+          "activity": 1.55,
+          "goal": "lose",
+          "startWeightKg": 65,
+          "currentWeightKg": 62,
+          "goalWeightKg": 58,
+          "bmr": 1380,
+          "tdee": 2139,
+          "targetCalories": 1639,
+          "activityLabel": "Moderate",
+          "avatarDataUrl": "",
+          "updatedAt": "2026-04-09T10:00:00.000Z"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,470 @@
+<!doctype html>
+<!-- الصفحة الرئيسية التعريفية للمشروع (Landing Page) وبها أقسام التعريف والمميزات وتسجيل الدخول -->
+<html lang="en" data-i18n-title="doc.index">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>Nutrition — NutriTrack</title>
+    <link rel="shortcut icon" href="./assest/images/Nutricion-icon.png" alt="NutriTrack logo" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      
+    <link rel="stylesheet" href="./assest/css/styles-home.css" />
+    <script src="./assest/js/theme.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main" data-i18n="common.skip">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <img class="brand-mark" src="./assest/images/Nutricion-icon.png" alt="NutriTrack logo" />
+          <span class="brand-name">NutriTrack</span>
+        </div>
+
+        <nav class="nav" aria-label="Primary">
+          <a href="#features" class="nav-link" data-i18n="nav.features">Features</a>
+          <a href="#challenges" class="nav-link" data-i18n="nav.challenges">Challenges</a>
+          <a href="#philosophy" class="nav-link" data-i18n="nav.philosophy">Philosophy</a>
+        </nav>
+
+        <div class="header-actions">
+          <button type="button" class="nutri-lang-toggle nutri-lang-toggle--header" aria-label="Switch language" title="العربية · English">
+            <span class="material-symbols-outlined nutri-lang-toggle__icon" aria-hidden="true">translate</span>
+            <span class="nutri-lang-toggle__label" aria-hidden="true">ع</span>
+          </button>
+          <button type="button" class="theme-toggle-btn" id="theme-toggle" title="Switch to Light Mode" aria-label="Switch to Light Mode">
+            <span class="material-symbols-outlined theme-icon">light_mode</span>
+          </button>
+          <a class="icon-btn icon-btn-wide js-open-auth" href="#" data-auth-mode="login" data-i18n-aria="nav.profile" aria-label="Profile" title="Profile">
+            <svg viewBox="0 0 24 24" class="icon-cta" aria-hidden="true">
+              <path
+                d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-4.42 0-8 2.01-8 4.5V21h16v-2.5c0-2.49-3.58-4.5-8-4.5Z"
+                fill="currentColor"
+              />
+            </svg>
+            <span class="icon-btn-text" data-i18n="nav.profile">Profile</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="section hero">
+        <div class="container hero-grid">
+          <div class="hero-copy reveal">
+            <h1 class="hero-title" id="hero-animated-title" aria-live="polite">Transform Your Nutrition Journey</h1>
+            <p class="hero-subtitle" id="hero-animated-subtitle" aria-live="polite">Experience personalized diet plans tailored to your body type, lifestyle, and goals.</p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary js-open-auth" href="#" data-auth-mode="signup" data-i18n="index.cta.start">Get Started</a>
+              <a class="btn btn-outline" href="#features" data-i18n="index.cta.features">View Features</a>
+            </div>
+          </div>
+
+          <div class="hero-media reveal" aria-label="App preview">
+            <div class="hero-card hero-card-left">
+              <div class="hero-card-label" data-i18n="index.hero.cardCal">Daily Calories</div>
+              <div class="hero-card-value">
+                1,850
+                <span class="hero-card-unit" data-i18n="index.hero.kcal">kcal</span>
+              </div>
+            </div>
+
+            <div class="hero-preview" role="img" aria-label="Preview image">
+              <img src="./assest/images/photo-main.jpg" alt="./assest/images/photo-main.jpg" />
+            </div>
+
+            <div class="hero-card hero-card-right">
+              <div class="hero-card-label" data-i18n="index.hero.cardProg">Progress</div>
+              <div class="hero-card-value">
+                85<span class="hero-card-unit">%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="challenges" class="section section-white">
+        <div class="container">
+          <header class="section-head reveal">
+            <h2 class="section-title" data-i18n="index.challenges.title">Common Challenges We Solve</h2>
+            <p class="section-subtitle" data-i18n="index.challenges.sub">
+              Traditional diet systems often fall short. Here's what we address.
+            </p>
+          </header>
+
+          <div class="grid-3 cards">
+            <article class="card reveal">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" class="icon">
+                  <path
+                    d="M16 11c1.66 0 3-1.34 3-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3Zm-8 0c1.66 0 3-1.34 3-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3Zm0 2c-2.67 0-8 1.34-8 4v2h10v-2c0-1.5.84-2.74 2.2-3.6C11.07 13.17 9.37 13 8 13Zm8 0c-.29 0-.62.02-.97.05C16.2 13.71 17 14.8 17 16v3h7v-2c0-2.66-5.33-4-8-4Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <h3 class="card-title" data-i18n="index.card1.title">Generic Plans Ignore Body Types</h3>
+              <p class="card-text" data-i18n="index.card1.text">
+                Standard diet plans don't account for individual metabolism,
+                body composition, or personal health goals.
+              </p>
+            </article>
+
+            <article class="card reveal">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" class="icon">
+                  <path
+                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2Zm-7 16H7v-2h5v2Zm5-4H7V7h10v8Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <h3 class="card-title" data-i18n="index.card2.title">Difficult Calorie Calculation</h3>
+              <p class="card-text" data-i18n="index.card2.text">
+                Manually tracking nutrition data is time-consuming and prone to
+                errors, making it hard to stay consistent.
+              </p>
+            </article>
+
+            <article class="card reveal">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" class="icon">
+                  <path
+                    d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0-6C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm1 11h-2V7h2v6Zm0 4h-2v-2h2v2Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <h3 class="card-title" data-i18n="index.card3.title">Work Schedule Incompatibility</h3>
+              <p class="card-text" data-i18n="index.card3.text">
+                Rigid meal plans don't fit busy lifestyles, making it
+                challenging to maintain healthy eating habits.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" class="section">
+        <div class="container solution-grid">
+          <div class="solution-copy reveal">
+            <h2 class="section-title" data-i18n="index.solution.title">Our Solution</h2>
+
+            <ul class="feature-list">
+              <li class="feature">
+                <span class="feature-dot" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="icon-sm">
+                    <path
+                      d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 14.5h-2V11h2v5.5ZM13 9h-2V7h2v2Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <div>
+                  <div class="feature-title" data-i18n="index.feat1.title">Personalized Diet Plans</div>
+                  <div class="feature-text" data-i18n="index.feat1.text">
+                    Custom meal plans based on your unique body metrics, goals,
+                    and preferences.
+                  </div>
+                </div>
+              </li>
+
+              <li class="feature">
+                <span class="feature-dot" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="icon-sm">
+                    <path
+                      d="M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm1 9h4v2h-6V7h2v6Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <div>
+                  <div class="feature-title" data-i18n="index.feat2.title">Smart Calorie Tracking</div>
+                  <div class="feature-text" data-i18n="index.feat2.text">
+                    Effortlessly log meals and track macros with our intuitive
+                    interface and database.
+                  </div>
+                </div>
+              </li>
+
+              <li class="feature">
+                <span class="feature-dot" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="icon-sm">
+                    <path
+                      d="M12 3a9 9 0 0 0-9 9v6h6a9 9 0 0 0 9-9V3h-6Zm-1 13H5v-4a7 7 0 0 1 7-7h4v4a7 7 0 0 1-7 7Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <div>
+                  <div class="feature-title" data-i18n="index.feat3.title">Remote Nutritionist Follow-up</div>
+                  <div class="feature-text" data-i18n="index.feat3.text">
+                    Connect with certified nutritionists who monitor your
+                    progress and adjust your plan.
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="dash reveal" data-i18n-aria="index.dash.overview" aria-label="Today's Overview">
+            <div class="dash-head">
+              <div class="dash-title" data-i18n="index.dash.overview">Today's Overview</div>
+              <div class="dash-date" data-i18n="index.dash.date">Mar 10, 2026</div>
+            </div>
+
+            <div class="dash-metrics">
+              <div class="metric">
+                <div class="metric-label" data-i18n="index.dash.calories">Calories</div>
+                <div class="metric-value">1,450</div>
+                <div class="metric-sub"><span data-i18n="index.dash.of">of</span> 2,000</div>
+              </div>
+              <div class="metric">
+                <div class="metric-label" data-i18n="index.dash.protein">Protein</div>
+                <div class="metric-value metric-green">85g</div>
+                <div class="metric-sub"><span data-i18n="index.dash.of">of</span> 120g</div>
+              </div>
+            </div>
+
+            <div class="dash-chart" role="img" data-i18n-aria="index.dash.chart" aria-label="Chart placeholder">
+              <div class="bars" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="philosophy" class="section section-white">
+        <div class="container">
+          <header class="section-head center reveal">
+            <h2 class="section-title" data-i18n="index.philo.title">Our Design Philosophy</h2>
+            <p class="section-subtitle" data-i18n="index.philo.sub">Built with user experience at the core</p>
+          </header>
+
+          <div class="grid-4 philosophy">
+            <div class="ph-item reveal">
+              <div class="ph-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" class="icon">
+                  <path
+                    d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16Zm0-13a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <div class="ph-title" data-i18n="index.philo1.title">Personalization First</div>
+              <div class="ph-text" data-i18n="index.philo1.text">
+                Every feature adapts to your unique needs and preferences
+              </div>
+            </div>
+
+            <div class="ph-item reveal">
+              <div class="ph-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" class="icon">
+                  <path
+                    d="M13 2L3 14h7l-1 8 10-12h-7l1-8Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <div class="ph-title" data-i18n="index.philo2.title">Simple Navigation</div>
+              <div class="ph-text" data-i18n="index.philo2.text">
+                Intuitive interface designed for effortless daily use
+              </div>
+            </div>
+
+            <div class="ph-item reveal">
+              <div class="ph-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" class="icon">
+                  <path
+                    d="M5 9h3v10H5V9Zm5-4h3v14h-3V5Zm5 7h3v7h-3v-7Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <div class="ph-title" data-i18n="index.philo3.title">Data Driven</div>
+              <div class="ph-text" data-i18n="index.philo3.text">
+                Make informed decisions with comprehensive analytics
+              </div>
+            </div>
+
+            <div class="ph-item reveal">
+              <div class="ph-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" class="icon">
+                  <path
+                    d="M12 6a9.77 9.77 0 0 0-10 6 9.77 9.77 0 0 0 20 0A9.77 9.77 0 0 0 12 6Zm0 10a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <div class="ph-title" data-i18n="index.philo4.title">Continuous Monitoring</div>
+              <div class="ph-text" data-i18n="index.philo4.text">
+                Track progress in real-time with automated insights
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="cta" class="cta">
+        <div class="container cta-inner reveal">
+          <h2 class="cta-title" data-i18n="index.cta2.title">Ready to Transform Your Health?</h2>
+          <p class="cta-text" data-i18n="index.cta2.text">
+            Join thousands of users who have achieved their nutrition goals with our
+            platform
+          </p>
+          <a class="btn btn-cta js-open-auth" href="#" data-auth-mode="signup" data-i18n="index.cta.bottom">Start Your Journey</a>
+        </div>
+      </section>
+    </main>
+
+    <div class="auth-modal" id="auth-modal" aria-hidden="true">
+      <div class="auth-modal__backdrop" data-auth-close></div>
+      <section class="auth-panel" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+        <button class="auth-close" type="button" data-auth-close data-i18n-aria="auth.close" aria-label="Close auth dialog">×</button>
+        <h2 id="auth-title" class="auth-title" data-i18n="auth.welcome">Welcome to NutriCenter</h2>
+        <p class="auth-subtitle" data-i18n="auth.sub">Create account or login to continue.</p>
+
+        <div class="auth-tabs">
+          <button type="button" class="auth-tab is-active" data-auth-tab="signup" data-i18n="auth.signupTab">Sign up</button>
+          <button type="button" class="auth-tab" data-auth-tab="login" data-i18n="auth.loginTab">Login</button>
+        </div>
+
+        <p id="auth-message" class="auth-message" style="display:none;"></p>
+
+        <form id="signup-form" class="auth-form">
+          <div class="auth-grid">
+            <input id="signup-name" type="text" data-i18n-placeholder="auth.signup.name" placeholder="Full name" required />
+            <input id="signup-email" type="email" data-i18n-placeholder="auth.signup.email" placeholder="Email" required />
+            <input id="signup-password" type="password" data-i18n-placeholder="auth.signup.pass" placeholder="Password (min 6 chars)" minlength="6" required />
+            <input id="signup-age" type="number" data-i18n-placeholder="auth.signup.age" placeholder="Age" min="1" max="120" required />
+            <select id="signup-gender" required>
+              <option value="" data-i18n="auth.signup.gender">Gender</option>
+              <option value="male" data-i18n="auth.signup.male">Male</option>
+              <option value="female" data-i18n="auth.signup.female">Female</option>
+            </select>
+            <input id="signup-height" type="number" data-i18n-placeholder="auth.signup.height" placeholder="Height (cm)" min="50" max="260" step="0.1" required />
+            <input id="signup-weight" type="number" data-i18n-placeholder="auth.signup.weight" placeholder="Weight (kg)" min="20" max="400" step="0.1" required />
+            <input id="signup-goal-weight" type="number" data-i18n-placeholder="auth.signup.goalW" placeholder="Goal weight (kg)" min="20" max="400" step="0.1" required />
+            <select id="signup-activity" required>
+              <option value="1.2" data-i18n="auth.act.sed">Sedentary (1.2)</option>
+              <option value="1.375" data-i18n="auth.act.light">Light (1.375)</option>
+              <option value="1.55" data-i18n="auth.act.mod">Moderate (1.55)</option>
+              <option value="1.725" data-i18n="auth.act.act">Active (1.725)</option>
+              <option value="1.9" data-i18n="auth.act.very">Very active (1.9)</option>
+            </select>
+            <select id="signup-goal" required>
+              <option value="maintain" data-i18n="auth.goal.maintain">Maintain</option>
+              <option value="lose" data-i18n="auth.goal.lose">Lose weight</option>
+              <option value="gain" data-i18n="auth.goal.gain">Gain muscle</option>
+            </select>
+          </div>
+          <details class="auth-health-details">
+            <summary class="auth-health-details__summary" data-i18n="auth.health.summary">Health conditions (optional) — meals adjust to your selection</summary>
+            <div id="signup-health-conditions" class="health-conditions-box" aria-label="Health conditions"></div>
+          </details>
+          <button type="submit" class="btn btn-primary auth-submit" data-i18n="auth.create">Create account</button>
+        </form>
+
+        <form id="login-form" class="auth-form auth-form--hidden">
+          <div class="auth-grid auth-grid--single">
+            <input id="login-email" type="email" data-i18n-placeholder="auth.signup.email" placeholder="Email" required />
+            <input id="login-password" type="password" data-i18n-placeholder="auth.login.pass" placeholder="Password" required />
+          </div>
+          <button type="submit" class="btn btn-primary auth-submit" data-i18n="auth.login.btn">Login</button>
+          <button id="show-forgot-btn" type="button" class="auth-link-btn" data-i18n="auth.forgot">Forgot password?</button>
+        </form>
+
+        <form id="forgot-form" class="auth-form auth-form--hidden">
+
+          <!-- Step 1: Email -->
+          <div id="forgot-step-email">
+            <div class="auth-grid auth-grid--single">
+              <input id="forgot-email" type="email" data-i18n-placeholder="auth.forgot.email" placeholder="Your account email" required />
+            </div>
+            <button id="forgot-send-otp-btn" type="button" class="btn btn-primary auth-submit" data-i18n="auth.sendOtp">Send OTP</button>
+            <button id="back-to-login-btn" type="button" class="auth-link-btn" data-i18n="auth.backLogin">Back to login</button>
+          </div>
+
+          <!-- Step 2: OTP + New Password (hidden until OTP is sent) -->
+          <div id="forgot-step-otp" style="display:none;">
+            <div class="auth-grid auth-grid--single">
+              <input id="forgot-otp" type="text" inputmode="numeric" maxlength="6" data-i18n-placeholder="auth.forgot.otp" placeholder="Enter 6-digit OTP" required />
+              <input id="forgot-password" type="password" minlength="8" data-i18n-placeholder="auth.forgot.newpass" placeholder="New password (min 8 chars)" required />
+              <input id="forgot-password-confirm" type="password" minlength="8" data-i18n-placeholder="auth.forgot.confirmpass" placeholder="Confirm new password" required />
+            </div>
+            <button id="forgot-reset-btn" type="button" class="btn btn-primary auth-submit" data-i18n="auth.reset">Reset Password</button>
+            <button id="forgot-back-to-email-btn" type="button" class="auth-link-btn" data-i18n="auth.backEmail">&larr; Change email</button>
+          </div>
+
+        </form>
+
+        <div class="auth-divider"><span data-i18n="auth.or">or</span></div>
+        <button id="google-signup-btn" type="button" class="btn btn-outline auth-google-btn" data-i18n="auth.google">Continue with Google</button>
+      </section>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container footer-inner reveal">
+        <div class="footer-brand">
+          <img class="brand-mark" src="./assest/images/Nutricion-icon.png" alt="NutriTrack logo" />
+          <span>NutriTrack</span>
+        </div>
+        <a
+          class="footer-dev-contact"
+          href="https://wa.me/201141660359?text=Hello%20developers%2C%20I%20need%20support."
+          target="_blank"
+          rel="noopener noreferrer"
+          data-i18n="index.footer.contact"
+        >Contact developers on WhatsApp</a>
+        <div class="footer-note" data-i18n="index.footer.rights">© 2026. All rights reserved.</div>
+      </div>
+    </footer>
+
+<script src="./assest/js/i18n.js"></script>
+<script src="./assest/js/health-conditions.js"></script>
+
+<!--  أهم حاجة -->
+<script src="./assest/js/auth-backend-config.js"></script>
+
+<!--  API Client (shared authenticated fetch helper) -->
+<script src="./assest/js/api-client.js"></script>
+
+<!--  Core -->
+<script src="./assest/js/auth.js"></script>
+
+<!--  Auth modules -->
+<script src="./assest/js/auth-signup.js"></script>
+<script src="./assest/js/auth-login.js"></script>
+<script src="./assest/js/auth-forgot.js"></script>
+
+<!-- UI -->
+<script src="./assest/js/hero-words.js"></script>
+<script src="./assest/js/landing-reveal.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

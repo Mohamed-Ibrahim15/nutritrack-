@@ -7,7 +7,10 @@
     "require": {
         "php": "^8.2",
         "laravel/framework": "^11.0",
-        "laravel/tinker": "^2.9"
+        "laravel/sanctum": "^4.0",
+        "laravel/socialite": "^5.27",
+        "laravel/tinker": "^2.9",
+        "spatie/laravel-one-time-passwords": "^1.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

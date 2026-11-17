@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<!-- صفحة الرسائل والتقارير، وتعرض بطاقات التواصل أو الملاحظات الطبية للمستخدم -->
+<html lang="en" data-i18n-title="doc.reports">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../assest/images/Nutricion-icon.png" type="image/x-icon" />
+    <title>Follow up — NutriCenter</title>
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="../assest/css/main.css" />
+    <script src="../assest/js/theme.js"></script>
+</head>
+<body>
+    <div class="container">
+   <aside class="side-nav" id="side-nav">
+           <div class="logo">
+             <h2 data-i18n="app.brand">NutriCenter</h2>
+             <button type="button" class="sidebar-theme-btn theme-toggle-btn" title="Switch to Light Mode" aria-label="Switch to Light Mode">
+               <span class="material-symbols-outlined theme-icon">light_mode</span>
+             </button>
+           </div>
+     <div class="sidebar">
+            <a href="home.html">
+              <span class="material-symbols-outlined">home</span>
+              <h3 data-i18n="nav.home">Home</h3>
+           </a>
+           <a href="track-calories.html">
+            <span class="material-symbols-outlined">vital_signs</span>
+            <h3 data-i18n="nav.track">Track Calories</h3>
+           </a>
+            <a href="chatbot.html">
+             <span class="material-symbols-outlined">smart_toy</span>
+             <h3 data-i18n="nav.chatbot">AI Assistant</h3>
+            </a>
+
+           <a href="myplan.html">
+            <span class="material-symbols-outlined">assignment</span>
+            <h3 data-i18n="nav.plan">My Plan</h3>
+           </a>
+            <a href="plan-sport.html">
+            <span class="material-symbols-outlined">fitness_center</span>
+            <h3 data-i18n="nav.sport">Plan Sport</h3>
+           </a>
+            <a href="message.html" class="active">
+            <span class="material-symbols-outlined">chat_bubble</span>
+            <h3 data-i18n="nav.reports">Follow up</h3>
+           </a>
+            <a href="settings.html">
+             <span class="material-symbols-outlined">settings</span>
+            <h3 data-i18n="nav.settings">Settings</h3>
+           </a>
+           <a href="../index.html" class="back">
+            <span class="material-symbols-outlined">west</span>
+            <h4 data-i18n="nav.back">Back to Landing</h4>
+           </a>
+     </div>
+   </aside>
+   <div class="layout-content">
+   <button type="button" class="nav-overlay" id="nav-overlay" aria-hidden="true" data-i18n-aria="common.closeMenu" aria-label="Close menu"></button>
+   <header class="mobile-topbar">
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="side-nav" data-i18n-aria="common.openMenu" aria-label="Open menu">
+        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+      </button>
+      <span class="mobile-topbar__title" data-i18n="app.brand">NutriCenter</span>
+      <button type="button" class="nutri-lang-toggle nutri-lang-toggle--toolbar" aria-label="Switch language" title="العربية · English">
+        <span class="material-symbols-outlined" aria-hidden="true">translate</span>
+        <span class="nutri-lang-toggle__label" aria-hidden="true">ع</span>
+      </button>
+      <button type="button" class="theme-toggle-btn" id="theme-toggle" title="Switch to Light Mode">
+        <span class="material-symbols-outlined theme-icon">light_mode</span>
+      </button>
+   </header>
+   <main>
+    <div class="titel page-reveal">
+        <h2 data-i18n="reports.title">Follow up</h2>
+        <p data-i18n="reports.sub">Choose a doctor card to see full contact details</p>
+    </div>
+
+    <section class="settings-metrics page-reveal" style="margin-bottom: 2rem;">
+      <div class="settings-metric card">
+        <div class="settings-metric__head">
+          <h3 data-i18n="settings.metric.start">Start weight</h3>
+          <span class="settings-metric__chip" data-i18n="settings.chip.first">First saved</span>
+        </div>
+        <div class="field">
+          <label for="weight-start" data-i18n="settings.metric.weightLabel">Weight (kg)</label>
+          <input id="weight-start" type="number" min="20" max="400" step="0.1" data-i18n-placeholder="placeholder.start" placeholder="e.g. 92" />
+        </div>
+        <div class="settings-metric__kcal">
+          <div class="kcal-row"><span data-i18n="settings.kcal.tdee">Maintenance (TDEE)</span><strong id="kcal-start-tdee">—</strong></div>
+          <div class="kcal-row"><span data-i18n="settings.kcal.target">Target for goal</span><strong id="kcal-start-target">—</strong></div>
+        </div>
+      </div>
+
+      <div class="settings-metric card">
+        <div class="settings-metric__head">
+          <h3 data-i18n="settings.metric.current">Current weight</h3>
+          <span class="settings-metric__chip" data-i18n="settings.chip.now">Now</span>
+        </div>
+        <div class="field">
+          <label for="weight-current" data-i18n="settings.metric.weightLabel">Weight (kg)</label>
+          <input id="weight-current" type="number" min="20" max="400" step="0.1" data-i18n-placeholder="placeholder.curr" placeholder="e.g. 86" />
+        </div>
+        <div class="settings-metric__kcal">
+          <div class="kcal-row"><span data-i18n="settings.kcal.tdee">Maintenance (TDEE)</span><strong id="kcal-current-tdee">—</strong></div>
+          <div class="kcal-row"><span data-i18n="settings.kcal.target">Target for goal</span><strong id="kcal-current-target">—</strong></div>
+        </div>
+      </div>
+
+      <div class="settings-metric card">
+        <div class="settings-metric__head">
+          <h3 data-i18n="settings.metric.goal">Goal weight</h3>
+          <span class="settings-metric__chip" data-i18n="settings.chip.target">Target</span>
+        </div>
+        <div class="field">
+          <label for="weight-goal" data-i18n="settings.metric.weightLabel">Weight (kg)</label>
+          <input id="weight-goal" type="number" min="20" max="400" step="0.1" data-i18n-placeholder="placeholder.goal" placeholder="e.g. 78" />
+        </div>
+        <div class="settings-metric__kcal">
+          <div class="kcal-row"><span data-i18n="settings.kcal.tdee">Maintenance (TDEE)</span><strong id="kcal-goal-tdee">—</strong></div>
+          <div class="kcal-row"><span data-i18n="settings.kcal.target">Target for goal</span><strong id="kcal-goal-target">—</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="doctors-grid" aria-label="Doctors contact cards">
+      <article class="doctor-card page-reveal" tabindex="0" role="button" aria-haspopup="dialog" style="--doctor-accent:#ef476f;" data-doctor="nour"
+        data-name="Dr. Nour Hassan"
+        data-year="8 years experience"
+        data-specialty="Physical Therapy"
+        data-address="Nasr City, Cairo"
+        data-certs="BDS, MDS, Manual Therapy Diploma"
+        data-article="Dr. Nour focuses on postural correction and pain rehabilitation. Her plans combine manual sessions with at-home mobility drills to improve daily function."
+        data-features="Posture analysis|Rehab follow-up|Mobility plan"
+        data-whatsapp="https://wa.me/201141660359"
+        data-facebook="https://facebook.com"
+        data-contact="https://contacts.google.com">
+        <div class="doctor-card__brief">
+          <img src="../assest/images/photo-dr/Male doctor on light surface _ Premium Photo.jpg" alt="Dr. Nour Hassan" class="doctor-card__avatar" />
+          <h3>Dr. Nour Hassan</h3>
+        </div>
+      </article>
+
+      <article class="doctor-card page-reveal" tabindex="0" role="button" aria-haspopup="dialog" style="--doctor-accent:#f97316;" data-doctor="omar"
+        data-name="Dr. Omar Adel"
+        data-year="6 years experience"
+        data-specialty="Weight Loss"
+        data-address="Mohandessin, Giza"
+        data-certs="Clinical Nutrition Diploma, ACSM-CPT"
+        data-article="Dr. Omar designs realistic fat-loss plans based on adherence. He emphasizes food behavior coaching and weekly progress check-ins."
+        data-features="Fat-loss roadmap|Habit coaching|Weekly reports"
+        data-whatsapp="https://wa.me/201017930647"
+        data-facebook="https://facebook.com"
+        data-contact="https://contacts.google.com">
+        <div class="doctor-card__brief">
+          <img src="../assest/images/photo-dr/doctor.jpg" alt="Dr. Omar Adel" class="doctor-card__avatar" />
+          <h3>Dr. Omar Adel</h3>
+        </div>
+      </article>
+
+      <article class="doctor-card page-reveal" tabindex="0" role="button" aria-haspopup="dialog" style="--doctor-accent:#06b6d4;" data-doctor="hana"
+        data-name="Dr. Hana Mostafa"
+        data-year="9 years experience"
+        data-specialty="Physical Therapy"
+        data-address="Smouha, Alexandria"
+        data-certs="OMT Certificate, MSc Physical Therapy"
+        data-article="Dr. Hana specializes in sports recovery and chronic pain management. Her approach blends clinical treatment with progressive strengthening."
+        data-features="Sports rehab|Chronic pain care|Home exercise plan"
+        data-whatsapp="https://wa.me/201009355965"
+        data-facebook="https://facebook.com"
+        data-contact="https://contacts.google.com">
+        <div class="doctor-card__brief">
+          <img src="../assest/images/photo-dr/download6.jpg" alt="Dr. Hana Mostafa" class="doctor-card__avatar" />
+          <h3>Dr. Hana Mostafa</h3>
+        </div>
+      </article>
+
+      <article class="doctor-card page-reveal" tabindex="0" role="button" aria-haspopup="dialog" style="--doctor-accent:#8b5cf6;" data-doctor="karim"
+        data-name="Dr. Karim Samy"
+        data-year="5 years experience"
+        data-specialty="Weight Loss"
+        data-address="Sheikh Zayed, Giza"
+        data-certs="ISSA Nutritionist, Bariatric Care Course"
+        data-article="Dr. Karim supports clients with high-BMI transformation plans. He uses a step-by-step method focused on consistency and safe progression."
+        data-features="Body recomposition|Nutrition periodization|Long-term follow-up"
+        data-whatsapp="https://wa.me/201013717746"
+        data-facebook="https://facebook.com"
+        data-contact="https://contacts.google.com">
+        <div class="doctor-card__brief">
+          <img src="../assest/images/photo-dr/download (2).jpg" alt="Dr. Karim Samy" class="doctor-card__avatar" />
+          <h3>Dr. Karim Samy</h3>
+        </div>
+      </article>
+
+      <article class="doctor-card page-reveal" tabindex="0" role="button" aria-haspopup="dialog" style="--doctor-accent:#22c55e;" data-doctor="salma"
+        data-name="Dr. Salma Fathy"
+        data-year="7 years experience"
+        data-specialty="Physical Therapy"
+        data-address="New Cairo, Cairo"
+        data-certs="DPT, Dry Needling Certificate"
+        data-article="Dr. Salma works on neck, shoulder, and lower-back dysfunctions. Her programs are designed for office workers and active adults."
+        data-features="Ergonomic correction|Pain reduction|Muscle activation"
+        data-whatsapp="https://wa.me/201114161398"
+        data-facebook="https://facebook.com"
+        data-contact="https://contacts.google.com">
+        <div class="doctor-card__brief">
+          <img src="../assest/images/photo-dr/female doctor 🏥💊.jpg" alt="Dr. Salma Fathy" class="doctor-card__avatar" />
+          <h3>Dr. Salma Fathy</h3>
+        </div>
+      </article>
+
+      <article class="doctor-card page-reveal" tabindex="0" role="button" aria-haspopup="dialog" style="--doctor-accent:#3b82f6;" data-doctor="youssef"
+        data-name="Dr. Youssef Tarek"
+        data-year="10 years experience"
+        data-specialty="Weight Loss"
+        data-address="Mansoura, Dakahlia"
+        data-certs="MSc Nutrition, Obesity Management Program"
+        data-article="Dr. Youssef leads evidence-based obesity management protocols. He combines nutrition strategy with behavior tracking for measurable outcomes."
+        data-features="Medical weight-loss plans|Progress analytics|Lifestyle adjustment"
+        data-whatsapp="https://wa.me/201554610375"
+        data-facebook="https://facebook.com"
+        data-contact="https://contacts.google.com">
+        <div class="doctor-card__brief">
+          <img src="../assest/images/photo-dr/Picture perfect___.jpg" alt="Dr. Youssef Tarek" class="doctor-card__avatar" />
+          <h3>Dr. Youssef Tarek</h3>
+        </div>
+      </article>
+    </div>
+
+    <!-- ── Progress Tracking ─────────────────────────────── -->
+    <section class="card page-reveal" style="margin-top:2rem;" id="progress-section">
+      <div class="followup-section-header">
+        <div class="followup-section-icon"><span class="material-symbols-outlined">monitoring</span></div>
+        <h2 data-i18n="progress.title">Weight Progress Tracking</h2>
+      </div>
+      <p class="hint" style="margin-bottom:1rem;" data-i18n="progress.hint">Log your weight over time to track your journey.</p>
+
+      <!-- Chart -->
+      <div class="chart-wrap" style="height:220px;margin-bottom:1.25rem;" id="progress-chart-wrap">
+        <canvas id="progress-chart"></canvas>
+      </div>
+
+      <!-- Log list -->
+      <ul class="progress-log-list" id="progress-log-list"></ul>
+
+      <!-- Log form -->
+      <form id="progress-log-form" style="display:flex;flex-wrap:wrap;gap:0.75rem;align-items:flex-end;">
+        <div class="field" style="flex:1;min-width:140px;">
+          <label for="progress-weight" data-i18n="progress.label.weight">Weight (kg)</label>
+          <input id="progress-weight" type="number" min="20" max="400" step="0.1" placeholder="e.g. 80.5" required />
+        </div>
+        <div class="field" style="flex:2;min-width:200px;">
+          <label for="progress-notes" data-i18n="progress.label.notes">Notes (optional)</label>
+          <input id="progress-notes" type="text" maxlength="200" data-i18n-placeholder="progress.ph.notes" placeholder="e.g. After morning workout" />
+        </div>
+        <div class="field" style="flex:0 0 auto;">
+          <button type="submit" class="btn-primary" style="max-width:160px;margin-top:0.3rem;" data-i18n="progress.btn.log">Log weight</button>
+        </div>
+      </form>
+      <p id="progress-form-note" style="margin-top:0.5rem;font-size:0.8rem;"></p>
+    </section>
+
+    <!-- ── Feedback ──────────────────────────────────────── -->
+    <section class="card page-reveal" style="margin-top:1.5rem;" id="feedback-section">
+      <div class="followup-section-header">
+        <div class="followup-section-icon"><span class="material-symbols-outlined">star_rate</span></div>
+        <h2 data-i18n="feedback.title">Rate your experience</h2>
+      </div>
+      <p class="hint" style="margin-bottom:1.1rem;" data-i18n="feedback.hint">Your feedback helps us improve NutriTrack.</p>
+
+      <form id="feedback-form">
+        <div id="feedback-stars" class="star-rating-wrap">
+          <button type="button" class="star-btn" aria-label="1 star">☆</button>
+          <button type="button" class="star-btn" aria-label="2 stars">☆</button>
+          <button type="button" class="star-btn" aria-label="3 stars">☆</button>
+          <button type="button" class="star-btn" aria-label="4 stars">☆</button>
+          <button type="button" class="star-btn" aria-label="5 stars">☆</button>
+        </div>
+        <input type="hidden" id="feedback-rating-input" value="0" />
+        <div class="field" style="max-width:480px;margin-bottom:0.75rem;">
+          <label for="feedback-comment" data-i18n="feedback.label.comment">Comment (optional)</label>
+          <input id="feedback-comment" type="text" maxlength="500" data-i18n-placeholder="feedback.ph.comment" placeholder="Share your thoughts…" />
+        </div>
+        <button type="submit" class="btn-primary" style="max-width:200px;" data-i18n="feedback.btn.submit">Submit feedback</button>
+      </form>
+      <p id="feedback-note" style="margin-top:0.5rem;font-size:0.8rem;"></p>
+
+      <div class="followup-prev-feedback-header" style="margin-top:1.5rem;">
+        <h3 style="font-size:0.88rem;font-weight:700;color:var(--clr-dark);margin-bottom:0.6rem;display:flex;align-items:center;gap:0.4rem;">
+          <span class="material-symbols-outlined" style="font-size:1rem;color:var(--clr-primary);">history</span>
+          <span data-i18n="feedback.prevTitle">Your previous feedback</span>
+        </h3>
+      </div>
+      <ul id="feedback-list" class="feedback-history-list"></ul>
+    </section>
+
+    <!-- ── Health Advice (full-width, no card wrapper) ────────── -->
+    <section class="page-reveal" style="margin-top:2rem;" id="advice-section">
+      <div class="followup-section-header">
+        <div class="followup-section-icon"><span class="material-symbols-outlined">health_and_safety</span></div>
+        <h2 data-i18n="advice.title">Health Advice</h2>
+      </div>
+      <p class="hint" style="margin-bottom:1rem;" data-i18n="advice.hint">Curated nutrition &amp; wellness articles from our team.</p>
+      <div id="advice-container"></div>
+    </section>
+
+    <!-- doctor modal -->
+    <div class="doctor-modal" id="doctor-modal" hidden>
+      <div class="doctor-modal__overlay" id="doctor-modal-overlay"></div>
+      <article class="doctor-modal__card" role="dialog" aria-modal="true" aria-labelledby="modal-doctor-name">
+        <button type="button" class="doctor-modal__close" id="doctor-modal-close" aria-label="Close dialog">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+        <div class="doctor-modal__head">
+          <img id="modal-doctor-avatar" class="doctor-modal__avatar" alt="" />
+          <h3 id="modal-doctor-name"></h3>
+          <p id="modal-doctor-certs"></p>
+        </div>
+        <div class="doctor-modal__body">
+          <p id="modal-doctor-article"></p>
+          <ul id="modal-doctor-features"></ul>
+          <div class="doctor-modal__meta">
+            <p><strong id="doctor-year-label" data-i18n="doctor.modal.year">Year:</strong> <span id="modal-doctor-year"></span></p>
+            <p><strong id="doctor-specialty-label" data-i18n="doctor.modal.specialty">Specialty:</strong> <span id="modal-doctor-specialty"></span></p>
+            <p><strong id="doctor-address-label" data-i18n="doctor.modal.address">Address:</strong> <span id="modal-doctor-address"></span></p>
+          </div>
+          <div class="doctor-card__socials doctor-modal__socials">
+            <a id="modal-facebook" href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+            </a>
+            <a id="modal-whatsapp" href="#" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+            </a>
+            <a id="modal-contact" href="#" target="_blank" rel="noopener noreferrer" aria-label="Contacts">
+              <i class="fa-solid fa-address-book" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+   </main>
+   </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="../assest/js/i18n.js"></script>
+<script src="../assest/js/auth-backend-config.js"></script>
+<script src="../assest/js/api-client.js"></script>
+<script src="../assest/js/auth.js"></script>
+<script src="../assest/js/nav.js"></script>
+<script src="../assest/js/page-reveal.js"></script>
+<script src="../assest/js/message.js"></script>
+<script src="../assest/js/settings.js"></script>
+<script src="../assest/js/progress.js"></script>
+<script src="../assest/js/feedback.js"></script>
+<script src="../assest/js/advice.js"></script>
+</body>
+</html>
+

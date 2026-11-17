@@ -1,0 +1,337 @@
+Laravel API Backend Implementation Guide
+This guide covers building a Laravel API to validate users via standard login, Google Login, and OTP. It includes all necessary commands, code, and frontend integration steps to keep your existing localStorage logic unchanged.
+
+Step 1: Project Setup
+Create the Laravel project and install Socialite for Google auth:
+
+bash
+composer create-project laravel/laravel backend-api
+cd backend-api
+# Install Socialite
+composer require laravel/socialite
+# Ensure API routing and Sanctum are installed
+php artisan install:api
+Update your .env file with database, mail, and Google credentials:
+
+ini
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=your_database_name
+DB_USERNAME=root
+DB_PASSWORD=
+# Email configuration
+MAIL_MAILER=smtp
+MAIL_HOST=sandbox.smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=your_username
+MAIL_PASSWORD=your_password
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="noreply@yourdomain.com"
+MAIL_FROM_NAME="${APP_NAME}"
+# Google Credentials
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+GOOGLE_REDIRECT_URI=http://localhost:8000/api/auth/google/callback
+# Frontend URL
+FRONTEND_URL=http://localhost:5173
+In config/services.php, add:
+
+php
+'google' => [
+    'client_id' => env('GOOGLE_CLIENT_ID'),
+    'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+    'redirect' => env('GOOGLE_REDIRECT_URI'),
+],
+Step 2: Database Migrations
+Generate the OTP migration:
+
+bash
+php artisan make:model Otp -m
+1. Update database/migrations/xxxx_create_users_table.php Ensure it has name, email, password, and role. We make password nullable for Google/OTP users.
+
+php
+public function up(): void
+{
+    Schema::create('users', function (Blueprint $table) {
+        $table->id();
+        $table->string('name');
+        $table->string('email')->unique();
+        $table->string('password')->nullable();
+        $table->string('role')->default('user'); // Admin, user, etc.
+        $table->timestamp('email_verified_at')->nullable();
+        $table->rememberToken();
+        $table->timestamps();
+    });
+}
+2. Update database/migrations/xxxx_create_otps_table.php
+
+php
+public function up(): void
+{
+    Schema::create('otps', function (Blueprint $table) {
+        $table->id();
+        $table->string('email')->index();
+        $table->string('otp');
+        $table->timestamp('expires_at');
+        $table->timestamps();
+    });
+}
+Run migrations:
+
+bash
+php artisan migrate
+Step 3: Models
+app/Models/User.php
+
+php
+<?php
+namespace App\Models;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+class User extends Authenticatable
+{
+    use HasApiTokens, Notifiable;
+    protected $fillable = [
+        'name', 'email', 'password', 'role'
+    ];
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+}
+app/Models/Otp.php
+
+php
+<?php
+namespace App\Models;
+use Illuminate\Database\Eloquent\Model;
+class Otp extends Model
+{
+    protected $fillable = ['email', 'otp', 'expires_at'];
+    protected $casts = ['expires_at' => 'datetime'];
+}
+Step 4: OTP Mailer
+bash
+php artisan make:mail OtpMail
+app/Mail/OtpMail.php
+
+php
+<?php
+namespace App\Mail;
+use Illuminate\Bus\Queueable;
+use Illuminate\Mail\Mailable;
+use Illuminate\Queue\SerializesModels;
+class OtpMail extends Mailable
+{
+    use Queueable, SerializesModels;
+    public $otp;
+    public function __construct($otp)
+    {
+        $this->otp = $otp;
+    }
+    public function build()
+    {
+        return $this->subject('Your Login Code')
+                    ->html("<h2>Your verification code is: <strong>{$this->otp}</strong></h2>");
+    }
+}
+Step 5: Auth Controller
+bash
+php artisan make:controller AuthController
+app/Http/Controllers/AuthController.php
+
+php
+<?php
+namespace App\Http\Controllers;
+use App\Models\User;
+use App\Models\Otp;
+use App\Mail\OtpMail;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Laravel\Socialite\Facades\Socialite;
+use Carbon\Carbon;
+class AuthController extends Controller
+{
+    // 1. STANDARD LOGIN (Email & Password)
+    public function login(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+        $user = User::where('email', $request->email)->first();
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            return response()->json(['message' => 'Invalid email or password'], 401);
+        }
+        $token = $user->createToken('auth_token')->plainTextToken;
+        return response()->json([
+            'token' => $token,
+            'user' => $user
+        ]);
+    }
+    // 2. GOOGLE LOGIN
+    public function googleRedirect()
+    {
+        return Socialite::driver('google')->stateless()->redirect();
+    }
+    public function googleCallback()
+    {
+        try {
+            $googleUser = Socialite::driver('google')->stateless()->user();
+            
+            $user = User::firstOrCreate(
+                ['email' => $googleUser->getEmail()],
+                ['name' => $googleUser->getName(), 'role' => 'user']
+            );
+            $token = $user->createToken('auth_token')->plainTextToken;
+            // Redirect back to frontend with the token
+            return redirect(env('FRONTEND_URL') . '/login/success?token=' . $token);
+        } catch (\Exception $e) {
+            return redirect(env('FRONTEND_URL') . '/login?error=google_failed');
+        }
+    }
+    // 3. OTP LOGIN
+    public function sendOtp(Request $request)
+    {
+        $request->validate(['email' => 'required|email']);
+        
+        $otpCode = rand(100000, 999999);
+        Otp::where('email', $request->email)->delete();
+        Otp::create([
+            'email' => $request->email,
+            'otp' => $otpCode,
+            'expires_at' => Carbon::now()->addMinutes(10)
+        ]);
+        Mail::to($request->email)->send(new OtpMail($otpCode));
+        return response()->json(['message' => 'OTP sent successfully']);
+    }
+    public function verifyOtp(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'otp' => 'required'
+        ]);
+        $otpRecord = Otp::where('email', $request->email)
+                        ->where('otp', $request->otp)
+                        ->where('expires_at', '>', Carbon::now())
+                        ->first();
+        if (!$otpRecord) {
+            return response()->json(['message' => 'Invalid or expired OTP'], 401);
+        }
+        $user = User::firstOrCreate(
+            ['email' => $request->email],
+            ['name' => explode('@', $request->email)[0], 'role' => 'user']
+        );
+        $token = $user->createToken('auth_token')->plainTextToken;
+        $otpRecord->delete();
+        return response()->json([
+            'token' => $token,
+            'user' => $user
+        ]);
+    }
+}
+Step 6: Define Routes
+routes/api.php
+
+php
+use App\Http\Controllers\AuthController;
+// Standard Login
+Route::post('/login', [AuthController::class, 'login']);
+// Google Login
+Route::get('/auth/google', [AuthController::class, 'googleRedirect']);
+Route::get('/auth/google/callback', [AuthController::class, 'googleCallback']);
+// OTP Verification
+Route::post('/auth/otp/send', [AuthController::class, 'sendOtp']);
+Route::post('/auth/otp/verify', [AuthController::class, 'verifyOtp']);
+// Protected Route Example
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
+Step 7: Frontend Integration (localStorage)
+Your frontend stays completely the same visually and structurally. You just use fetch to ask Laravel if the credentials are valid, and if so, you save the output to localStorage.
+
+1. Standard Login (Email/Password)
+javascript
+async function handleLogin(email, password) {
+    const response = await fetch("http://localhost:8000/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({ email, password })
+    });
+    
+    const data = await response.json();
+    
+    if (response.ok) {
+        // Validation Passed! Save to your existing localStorage
+        localStorage.setItem('auth_token', data.token);
+        localStorage.setItem('user_data', JSON.stringify(data.user));
+        
+        // Redirect to dashboard
+        window.location.href = "/dashboard";
+    } else {
+        alert(data.message); // "Invalid email or password"
+    }
+}
+2. OTP Login
+javascript
+// Step A: Request OTP
+async function requestOtp(email) {
+    await fetch("http://localhost:8000/api/auth/otp/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({ email })
+    });
+    alert("Check your email for the code!");
+}
+// Step B: Verify OTP & Save to localStorage
+async function submitOtp(email, otpCode) {
+    const response = await fetch("http://localhost:8000/api/auth/otp/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({ email, otp: otpCode })
+    });
+    
+    const data = await response.json();
+    
+    if (response.ok) {
+        localStorage.setItem('auth_token', data.token);
+        localStorage.setItem('user_data', JSON.stringify(data.user));
+        window.location.href = "/dashboard";
+    } else {
+        alert("Incorrect code");
+    }
+}
+3. Google Login
+Instead of fetch, you redirect the browser to Laravel. Laravel handles Google and redirects back to your frontend.
+
+javascript
+// Login button click:
+function loginWithGoogle() {
+    window.location.href = "http://localhost:8000/api/auth/google";
+}
+// On your frontend's success page (e.g., /login/success):
+window.onload = function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
+    if (token) {
+        localStorage.setItem('auth_token', token);
+        
+        // Fetch user details securely
+        fetch("http://localhost:8000/api/user", {
+            headers: { "Authorization": `Bearer ${token}`, "Accept": "application/json" }
+        })
+        .then(res => res.json())
+        .then(user => {
+            localStorage.setItem('user_data', JSON.stringify(user));
+            window.location.href = "/dashboard";
+        });
+    }
+}
+Agent
+Final project - Copy
+
+
+
+AI may make mistakes. Double-check all generated code.

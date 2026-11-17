@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!-- صفحة لوحة التحكم الرئيسية للمستخدم بعد الدخول، وتعرض ملخصات سريعة وحالة اليوم -->
+<html lang="en" data-i18n-title="doc.home">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../assest/images/Nutricion-icon.png" type="image/x-icon" />
+    <title>Home — NutriCenter</title>
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="../assest/css/main.css" />
+    <script src="../assest/js/theme.js"></script>
+</head>
+<body>
+    <div class="container">
+   <aside class="side-nav" id="side-nav">
+           <div class="logo">
+             <h2 data-i18n="app.brand">NutriCenter</h2>
+             <button type="button" class="sidebar-lang-btn nutri-lang-toggle" title="العربية · English" aria-label="Switch language">
+               <span class="material-symbols-outlined nutri-lang-toggle__icon" aria-hidden="true">translate</span>
+               <span class="nutri-lang-toggle__label" aria-hidden="true">ع</span>
+             </button>
+             <button type="button" class="sidebar-theme-btn theme-toggle-btn" title="Switch to Light Mode" aria-label="Switch to Light Mode">
+               <span class="material-symbols-outlined theme-icon">light_mode</span>
+             </button>
+           </div>
+     <div class="sidebar">
+            <a href="home.html" class="active">
+              <span class="material-symbols-outlined">home</span>
+              <h3 data-i18n="nav.home">Home</h3>
+           </a>
+           <a href="track-calories.html">
+            <span class="material-symbols-outlined">vital_signs</span>
+            <h3 data-i18n="nav.track">Track Calories</h3>
+           </a>
+            <a href="chatbot.html">
+             <span class="material-symbols-outlined">smart_toy</span>
+             <h3 data-i18n="nav.chatbot">AI Assistant</h3>
+            </a>
+
+           <a href="myplan.html">
+            <span class="material-symbols-outlined">assignment</span>
+            <h3 data-i18n="nav.plan">My Plan</h3>
+           </a>
+            <a href="plan-sport.html">
+            <span class="material-symbols-outlined">fitness_center</span>
+            <h3 data-i18n="nav.sport">Plan Sport</h3>
+           </a>
+            <a href="message.html">
+            <span class="material-symbols-outlined">chat_bubble</span>
+            <h3 data-i18n="nav.reports">Follow up</h3>
+           </a>
+            <a href="settings.html">
+             <span class="material-symbols-outlined">settings</span>
+            <h3 data-i18n="nav.settings">Settings</h3>
+           </a>
+           <a href="../index.html" class="back">
+            <span class="material-symbols-outlined">west</span>
+            <h4 data-i18n="nav.back">Back to Landing</h4>
+           </a>
+     </div>
+   </aside>
+   <div class="layout-content">
+   <button type="button" class="nav-overlay" id="nav-overlay" aria-hidden="true" data-i18n-aria="common.closeMenu" aria-label="Close menu"></button>
+   <header class="mobile-topbar">
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="side-nav" data-i18n-aria="common.openMenu" aria-label="Open menu">
+        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+      </button>
+      <span class="mobile-topbar__title" data-i18n="app.brand">NutriCenter</span>
+      <button type="button" class="nutri-lang-toggle nutri-lang-toggle--toolbar" aria-label="Switch language" title="العربية · English">
+        <span class="material-symbols-outlined" aria-hidden="true">translate</span>
+        <span class="nutri-lang-toggle__label" aria-hidden="true">ع</span>
+      </button>
+      <button type="button" class="theme-toggle-btn" id="theme-toggle" title="Switch to Light Mode">
+        <span class="material-symbols-outlined theme-icon">light_mode</span>
+      </button>
+   </header>
+   <main class="main-home">
+    <section class="home-hero">
+      <div class="home-hero__media" aria-hidden="true">
+        <img class="home-hero__bg-img" src="https://images.unsplash.com/photo-1476480862121-2bf0d1f45168?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="" loading="eager" />
+        <div class="home-hero__overlay"></div>
+      </div>
+      <div class="home-hero__content">
+        <p class="home-hero__eyebrow home-hero__rise" data-i18n="home.hero.eyebrow">Move better · Eat smarter · Feel stronger</p>
+        <h1 class="home-hero__title home-hero__rise" data-i18n="home.hero.title">Your daily hub for nutrition &amp; active living</h1>
+        <p class="home-hero__lead home-hero__rise" data-i18n="home.hero.lead">Track energy needs, plan workouts, and stay in touch with your care team—all in one calm, health-focused workspace.</p>
+        <div class="home-hero__cta home-hero__rise">
+          <a href="track-calories.html" class="home-btn home-btn--primary" data-i18n="home.hero.calc">Calculate calories</a>
+          <a href="plan-sport.html" class="home-btn home-btn--ghost" data-i18n="home.hero.train">Explore training</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="home-mosaic" aria-label="Healthy lifestyle imagery">
+      <figure class="home-mosaic__item home-mosaic__item--tall page-reveal">
+        <img src="../assest/images/home/co-run.jpg" alt="Runners training together outdoors" loading="lazy" width="400" height="520" />
+        <figcaption data-i18n="home.mosaic.1">Group runs &amp; community energy</figcaption>
+      </figure>
+      <figure class="home-mosaic__item page-reveal">
+        <img src="../assest/images/home/match your goal.jpg" alt="Balanced healthy meal with vegetables" loading="lazy" width="600" height="360" />
+        <figcaption data-i18n="home.mosaic.2">Fuel that matches your goals</figcaption>
+      </figure>
+      <figure class="home-mosaic__item page-reveal">
+        <img src="../assest/images/home/Wellness Escape in Monterey Bay _ Sanctuary Beach Resort.jpg" alt="Person stretching after exercise" loading="lazy" width="600" height="360" />
+        <figcaption data-i18n="home.mosaic.3">Recovery &amp; mobility</figcaption>
+      </figure>
+    </div>
+
+    <div class="titel home-section-title page-reveal">
+        <h2 data-i18n="home.glance.title">Today at a glance</h2>
+        <p data-i18n="home.glance.sub">Quick links to the tools that keep your plan on track</p>
+    </div>
+    <div class="top-home top-home--cards">
+        <a href="track-calories.html" class="top-h top-h--image page-reveal">
+            <div class="top-h__img-wrap">
+              <img src="../assest/images/home/daily.jpg" alt="Heart health and vitals concept" loading="lazy" width="400" height="220" />
+            </div>
+            <div class="top-h__body">
+              <h3 data-i18n="home.card1.title">Daily energy</h3>
+              <p data-i18n="home.card1.text">Use Track Calories to compute BMR and your maintenance calories (TDEE).</p>
+              <span class="top-h__link"><span data-i18n="home.card1.link">Open calculator</span> <span class="material-symbols-outlined" style="font-size:1rem;vertical-align:middle;">arrow_forward</span></span>
+            </div>
+        </a>
+        <a href="myplan.html" class="top-h top-h--image page-reveal">
+            <div class="top-h__img-wrap">
+              <img src="../assest/images/home/daily.jpg" alt="Health tracking and daily metrics" loading="lazy" width="400" height="220" />
+            </div>
+            <div class="top-h__body">
+              <h3 data-i18n="home.card2.title">My Plan</h3>
+              <p data-i18n="home.card2.text">Review charts for your calorie goal, progress, and current intake estimate.</p>
+              <span class="top-h__link"><span data-i18n="home.card2.link">View analytics</span> <span class="material-symbols-outlined" style="font-size:1rem;vertical-align:middle;">arrow_forward</span></span>
+            </div>
+        </a>
+        <a href="plan-sport.html" class="top-h top-h--image page-reveal">
+            <div class="top-h__img-wrap">
+              <img src="../assest/images/home/training.jpg" alt="People exercising in a gym" loading="lazy" width="400" height="220" />
+            </div>
+            <div class="top-h__body">
+              <h3 data-i18n="home.card3.title">Training</h3>
+              <p data-i18n="home.card3.text">Plan Sport suggests workouts aligned with weight loss and your activity level.</p>
+              <span class="top-h__link"><span data-i18n="home.card3.link">See workouts</span> <span class="material-symbols-outlined" style="font-size:1rem;vertical-align:middle;">arrow_forward</span></span>
+            </div>
+        </a>
+    </div>
+
+    <section class="home-wellness-strip page-reveal">
+      <div class="home-wellness-strip__text">
+        <h2 data-i18n="home.wellness.title">Small habits, steady results</h2>
+        <p data-i18n="home.wellness.text">Walking meetings, protein at breakfast, and two strength sessions a week add up. NutriCenter helps you see the numbers behind the habit.</p>
+      </div>
+      <div class="home-wellness-strip__photos">
+        <img src="../assest/images/home/small-1.jpg" alt="Person meditating for wellbeing" loading="lazy" width="200" height="200" />
+        <img src="../assest/images/home/Wellness Escape in Monterey Bay _ Sanctuary Beach Resort.jpg" alt="Athlete drinking water" loading="lazy" width="200" height="200" />
+        <img src="../assest/images/home/recovery.jpg" alt="Cycling outdoors" loading="lazy" width="200" height="200" />
+      </div>
+    </section>
+   </main>
+   </div>
+</div>
+<script src="../assest/js/i18n.js"></script>
+<script src="../assest/js/auth-backend-config.js"></script>
+<script src="../assest/js/api-client.js"></script>
+<script src="../assest/js/auth.js"></script>
+<script src="../assest/js/nav.js"></script>
+<script src="../assest/js/page-reveal.js"></script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+﻿<!DOCTYPE html>
+<!-- صفحة الخطة الرياضية لاقتراح التمارين ومتابعة نشاط المستخدم البدني -->
+<html lang="en" data-i18n-title="doc.sport">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../assest/images/Nutricion-icon.png" type="image/x-icon" />
+    <title>Plan Sport — NutriCenter</title>
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="../assest/css/main.css" />
+    <script src="../assest/js/theme.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div id="nutri-plan-day-images" hidden aria-hidden="true">
+      <img data-plan-day-index="0" src="../assest/images/plan-sport/week.jpg" alt="" />
+      <img data-plan-day-index="1" src="../assest/images/plan-sport/bottom3.jpg" alt="" />
+      <img data-plan-day-index="2" src="../assest/images/plan-sport/download.jpg" alt="" />
+      <img data-plan-day-index="3" src="../assest/images/plan-sport/download%20(1).jpg" alt="" />
+      <img data-plan-day-index="4" src="../assest/images/plan-sport/walking.jpg" alt="" />
+      <img data-plan-day-index="5" src="../assest/images/plan-sport/main.jpg" alt="" />
+      <img data-plan-day-index="6" src="../assest/images/plan-sport/full.jpg" alt="" />
+      <img data-plan-day-index="7" src="../assest/images/plan-sport/hiit.jpg" alt="" />
+    </div>
+    <div class="container">
+   <aside class="side-nav" id="side-nav">
+           <div class="logo">
+             <h2 data-i18n="app.brand">NutriCenter</h2>
+             <button type="button" class="sidebar-theme-btn theme-toggle-btn" title="Switch to Light Mode" aria-label="Switch to Light Mode">
+               <span class="material-symbols-outlined theme-icon">light_mode</span>
+             </button>
+           </div>
+     <div class="sidebar">
+            <a href="home.html">
+              <span class="material-symbols-outlined">home</span>
+              <h3 data-i18n="nav.home">Home</h3>
+           </a>
+           <a href="track-calories.html">
+            <span class="material-symbols-outlined">vital_signs</span>
+            <h3 data-i18n="nav.track">Track Calories</h3>
+           </a>
+            <a href="chatbot.html">
+             <span class="material-symbols-outlined">smart_toy</span>
+             <h3 data-i18n="nav.chatbot">AI Assistant</h3>
+            </a>
+
+           <a href="myplan.html">
+            <span class="material-symbols-outlined">assignment</span>
+            <h3 data-i18n="nav.plan">My Plan</h3>
+           </a>
+            <a href="plan-sport.html" class="active">
+            <span class="material-symbols-outlined">fitness_center</span>
+            <h3 data-i18n="nav.sport">Plan Sport</h3>
+           </a>
+            <a href="message.html">
+            <span class="material-symbols-outlined">chat_bubble</span>
+            <h3 data-i18n="nav.reports">Follow up</h3>
+           </a>
+            <a href="settings.html">
+             <span class="material-symbols-outlined">settings</span>
+            <h3 data-i18n="nav.settings">Settings</h3>
+           </a>
+           <a href="../index.html" class="back">
+            <span class="material-symbols-outlined">west</span>
+            <h4 data-i18n="nav.back">Back to Landing</h4>
+           </a>
+     </div>
+   </aside>
+   <div class="layout-content">
+   <button type="button" class="nav-overlay" id="nav-overlay" aria-hidden="true" data-i18n-aria="common.closeMenu" aria-label="Close menu"></button>
+   <header class="mobile-topbar">
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="side-nav" data-i18n-aria="common.openMenu" aria-label="Open menu">
+        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+      </button>
+      <span class="mobile-topbar__title" data-i18n="app.brand">NutriCenter</span>
+      <button type="button" class="nutri-lang-toggle nutri-lang-toggle--toolbar" aria-label="Switch language" title="العربية · English">
+        <span class="material-symbols-outlined" aria-hidden="true">translate</span>
+        <span class="nutri-lang-toggle__label" aria-hidden="true">ع</span>
+      </button>
+      <button type="button" class="theme-toggle-btn" id="theme-toggle" title="Switch to Light Mode">
+        <span class="material-symbols-outlined theme-icon">light_mode</span>
+      </button>
+   </header>
+   <main>
+    <div class="titel page-reveal">
+        <h2 data-i18n="sport.title">Plan Sport</h2>
+        <p data-i18n="sport.sub">Weight-loss friendly training, visuals, and training analytics</p>
+    </div>
+
+    <section class="sport-page-hero page-reveal">
+      <div class="sport-page-hero__copy sport-hero">
+        <p style="font-size:0.85rem;color:var(--clr-dark);line-height:1.65;max-width:640px;" data-i18n-html="sport.heroHtml">
+          Combine calorie awareness from <strong>Track Calories</strong> with consistent movement. For fat loss, many people succeed with
+          <strong>2–4 strength sessions</strong> per week plus <strong>150+ minutes</strong> of moderate cardio, adjusted to your level and medical clearance.
+        </p>
+        <p class="hint" style="margin-top:0.75rem;" id="sport-tdee-hint"></p>
+      </div>
+      <div class="sport-page-hero__visual">
+        <img src="../assest/images/plan-sport/main.jpg" alt="Woman running outdoors for fitness" loading="lazy" width="480" height="320" />
+      </div>
+    </section>
+
+    <section class="card sport-burn-calculator page-reveal" style="margin-top:1rem;">
+      <h2 data-i18n="sport.burn.title">Activity burn calculator</h2>
+      <p class="hint" style="margin-bottom:0.85rem;" data-i18n-html="sport.burn.hintHtml">
+        Pick an activity, then enter <strong>duration (minutes)</strong> or <strong>distance (km)</strong> for walk/run/cycle if you skip duration. Uses your saved weight from Track Calories and approximate MET values. Each successful <strong>Calculate burn</strong> saves that session to your profile so <strong>My Plan</strong> can total rolling <strong>24h</strong> and <strong>7-day</strong> exercise kcal.
+      </p>
+      <div class="sport-burn-calculator__grid">
+        <div class="field">
+          <label for="sport-burn-exercise" data-i18n="sport.label.activity">Activity</label>
+          <select id="sport-burn-exercise"></select>
+        </div>
+        <div class="field">
+          <label for="sport-burn-minutes" data-i18n="sport.label.min">Duration (minutes)</label>
+          <input type="number" id="sport-burn-minutes" min="1" max="600" step="1" data-i18n-placeholder="sport.ph.min" placeholder="e.g. 30" />
+        </div>
+        <div class="field">
+          <label for="sport-burn-distance" data-i18n="sport.label.dist">Distance (km) — optional</label>
+          <input type="number" id="sport-burn-distance" min="0" max="300" step="0.1" data-i18n-placeholder="sport.ph.dist" placeholder="If no duration" />
+        </div>
+      </div>
+      <div class="sport-burn-calculator__actions">
+        <button type="button" class="btn-primary" id="sport-burn-calc" data-i18n="sport.btn.burn">Calculate burn</button>
+      </div>
+      <p id="sport-burn-error" class="sport-burn-msg" role="alert" hidden></p>
+      <div class="sport-burn-results">
+        <p><strong data-i18n="sport.burn.total">Estimated total burn:</strong> <span id="sport-burn-out-total">—</span> kcal</p>
+        <p class="hint" style="margin:0;"><strong data-i18n="sport.burn.rate">Burn rate:</strong> <span id="sport-burn-out-rate">—</span> <span data-i18n="sport.burn.unit">kcal/min (approx.)</span></p>
+      </div>
+    </section>
+
+    <section class="card page-reveal" style="margin-top:1rem;">
+      <h2 data-i18n="sport.week.title">Your personalized weekly workout plan</h2>
+      <p class="hint" id="sport-plan-summary" style="margin-bottom:0.75rem;" data-i18n-html="sport.week.summaryHtml">
+        Save your data in Track Calories to build an 8-slot plan here (Mon–Sun plus an <strong>Alternative</strong> catch-up / swap day).
+      </p>
+      <div id="sport-plan-days" class="sport-grid sport-grid--plan-days"></div>
+    </section>
+
+    <section class="sport-exercises-block page-reveal">
+      <h3 class="sport-section-heading sport-section-heading--exercises" data-i18n="sport.ex.title">Exercises</h3>
+      <p class="hint sport-exercises-block__intro" data-i18n="sport.ex.intro">
+        Fat-loss friendly ideas with muscle retention: steady cardio, strength, and flexible options for your level—spread across the week and keep sessions evenly spaced.
+      </p>
+      <div class="sport-grid sport-grid--media sport-grid--exercises-eight">
+        <article class="sport-card sport-card--media sport-card--exercise-tile">
+          <div class="sport-card__img sport-card__img--exercise-tile">
+            <img src="../assest/images/plan-sport/walking.jpg" alt="Brisk walking" loading="lazy" width="400" height="220" />
+          </div>
+          <div class="sport-card__body">
+            <h3 data-i18n="sport.tile1.title">Walking &amp; easy cardio</h3>
+            <p data-i18n="sport.tile1.body">30–45 minutes brisk walking most days; low impact and pairs well with a calorie deficit. Aim for talk-but-not-sing pace.</p>
+            <span class="sport-tag" data-i18n="sport.tile1.tag">Beginner friendly</span>
+          </div>
+        </article>
+        <article class="sport-card sport-card--media sport-card--exercise-tile">
+          <div class="sport-card__img sport-card__img--exercise-tile">
+            <img src="../assest/images/plan-sport/main.jpg" alt="Running" loading="lazy" width="400" height="220" />
+          </div>
+          <div class="sport-card__body">
+            <h3 data-i18n="sport.tile2.title">Running &amp; heart rate</h3>
+            <p data-i18n="sport.tile2.body">2–3 easy-to-moderate sessions per week; add minutes gradually. Builds burn while keeping effort controlled.</p>
+            <span class="sport-tag" data-i18n="sport.tile2.tag">Cardio</span>
+          </div>
+        </article>
+        <article class="sport-card sport-card--media sport-card--exercise-tile">
+          <div class="sport-card__img sport-card__img--exercise-tile">
+            <img src="../assest/images/plan-sport/bottom3.jpg" alt="Cycling" loading="lazy" width="400" height="220" />
+          </div>
+          <div class="sport-card__body">
+            <h3 data-i18n="sport.tile3.title">Indoor or outdoor cycling</h3>
+            <p data-i18n="sport.tile3.body">40–60 minutes easy or moderate; kind to knees with good bike fit. Split AM/PM if that fits your schedule.</p>
+            <span class="sport-tag" data-i18n="sport.tile3.tag">Low impact</span>
+          </div>
+        </article>
+        <article class="sport-card sport-card--media sport-card--exercise-tile">
+          <div class="sport-card__img sport-card__img--exercise-tile">
+            <img src="../assest/images/plan-sport/hiit.jpg" alt="Swimming" loading="lazy" width="400" height="220" />
+          </div>
+          <div class="sport-card__body">
+            <h3 data-i18n="sport.tile4.title">Swimming</h3>
+            <p data-i18n="sport.tile4.body">30–45 minutes light or moderate swim; joint-friendly with solid calorie burn. 2–3× weekly when you have pool access.</p>
+            <span class="sport-tag" data-i18n="sport.tile4.tag">Full body</span>
+          </div>
+        </article>
+        <article class="sport-card sport-card--media sport-card--exercise-tile">
+          <div class="sport-card__img sport-card__img--exercise-tile">
+            <img src="../assest/images/plan-sport/full.jpg" alt="Strength training" loading="lazy" width="400" height="220" />
+          </div>
+          <div class="sport-card__body">
+            <h3 data-i18n="sport.tile5.title">Full-body strength</h3>
+            <p data-i18n="sport.tile5.body">Squat or leg press, row, push or bench, hinge, core. 2–3×8–12 reps, ~48h before repeating the same pattern.</p>
+            <span class="sport-tag" data-i18n="sport.tile5.tag">Muscle retention</span>
+          </div>
+        </article>
+        <article class="sport-card sport-card--media sport-card--exercise-tile">
+          <div class="sport-card__img sport-card__img--exercise-tile">
+            <img src="../assest/images/plan-sport/bottom%20(2).jpg" alt="HIIT" loading="lazy" width="400" height="220" />
+          </div>
+          <div class="sport-card__body">
+            <h3 data-i18n="sport.tile6.title">HIIT (optional)</h3>
+            <p data-i18n="sport.tile6.body">Short intervals e.g. 30s hard / 60s easy, 1–2× weekly if joints tolerate it. Consistency beats random spikes.</p>
+            <span class="sport-tag" data-i18n="sport.tile6.tag">Time efficient</span>
+          </div>
+        </article>
+        <article class="sport-card sport-card--media sport-card--exercise-tile">
+          <div class="sport-card__img sport-card__img--exercise-tile">
+            <img src="../assest/images/plan-sport/download.jpg" alt="Lower body" loading="lazy" width="400" height="220" />
+          </div>
+          <div class="sport-card__body">
+            <h3 data-i18n="sport.tile7.title">Lower-body focus</h3>
+            <p data-i18n="sport.tile7.body">Goblet squat 3×10–12, step-ups 3×8 each leg, glute bridge 3×12–15. Good form protects knees and supports weekly burn.</p>
+            <span class="sport-tag" data-i18n="sport.tile7.tag">Legs &amp; glutes</span>
+          </div>
+        </article>
+        <article class="sport-card sport-card--media sport-card--exercise-tile">
+          <div class="sport-card__img sport-card__img--exercise-tile">
+            <img src="../assest/images/plan-sport/download%20(1).jpg" alt="Upper body and core" loading="lazy" width="400" height="220" />
+          </div>
+          <div class="sport-card__body">
+            <h3 data-i18n="sport.tile8.title">Upper, core &amp; cardio finisher</h3>
+            <p data-i18n="sport.tile8.body">DB row 3×8–12, push-up or incline 3×6–15, plank 3×30–60s; then incline walk 15–20 min or jump rope 5×1 min.</p>
+            <span class="sport-tag" data-i18n="sport.tile8.tag">Strength + cardio</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <h3 class="sport-section-heading" data-i18n="sport.analytics.title">Training &amp; weight-loss analytics</h3>
+    <p class="hint sport-analytics-intro" data-i18n="sport.analytics.intro">Illustrative values for a 75&nbsp;kg adult (MET-based estimates). Personal burn varies with intensity, genetics, and fitness.</p>
+    <div class="sport-analytics-grid page-reveal">
+      <div class="card sport-chart-card">
+        <h2 data-i18n="sport.chart.burn">Estimated burn by activity (30&nbsp;min)</h2>
+        <p class="hint" style="margin-bottom:0.75rem;" data-i18n="sport.chart.burn.hint">Kilocalories per half hour at moderate effort.</p>
+        <div class="chart-wrap chart-wrap--sport">
+          <canvas id="chart-burn"></canvas>
+        </div>
+      </div>
+      <div class="card sport-chart-card">
+        <h2 data-i18n="sport.chart.hr">Heart-rate zones (example)</h2>
+        <p class="hint" style="margin-bottom:0.75rem;" data-i18n="sport.chart.hr.hint">Time in each zone during a mixed cardio week—fat burn is one piece of the puzzle; total energy matters most.</p>
+        <div class="chart-wrap chart-wrap--sport">
+          <canvas id="chart-hr"></canvas>
+        </div>
+      </div>
+      <div class="card sport-chart-card sport-chart-card--wide">
+        <h2 data-i18n="sport.chart.weekly">Weekly training minutes vs guideline</h2>
+        <p class="hint" style="margin-bottom:0.75rem;" data-i18n="sport.chart.weekly.hint">Bars: planned minutes per slot (8 slots). Line: guideline pace spread across all slots (~150&nbsp;min moderate cardio + strength, scaled per day).</p>
+        <div class="chart-wrap chart-wrap--sport chart-wrap--wide">
+          <canvas id="chart-weekly"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="sport-image-banner page-reveal">
+      <img src="../assest/images/plan-sport/download%20(2).jpg" alt="Athletic training and teamwork" loading="lazy" width="1200" height="400" />
+      <div class="sport-image-banner__caption" data-i18n-html="sport.bannerHtml">
+        <strong>Consistency beats perfection.</strong> Match training to your calorie target and recovery—then adjust weekly.
+      </div>
+    </div>
+
+    <div class="card page-reveal" style="margin-top:1.25rem;">
+      <h2 data-i18n="sport.safety.title">Safety</h2>
+      <p style="font-size:0.75rem;color:var(--clr-dark-variant);line-height:1.6;" data-i18n="sport.safety.text">If you have heart disease, uncontrolled blood pressure, diabetes complications, or joint pain, get clearance from a clinician before increasing intensity. Hydrate, warm up, and progress gradually.</p>
+    </div>
+   </main>
+   </div>
+</div>
+<script src="../assest/js/i18n.js"></script>
+<script src="../assest/js/auth-backend-config.js"></script>
+<script src="../assest/js/api-client.js"></script>
+<script src="../assest/js/auth.js"></script>
+<script src="../assest/js/nav.js"></script>
+<script src="../assest/js/page-reveal.js"></script>
+<script src="../assest/js/plan-sport.js"></script>
+</body>
+</html>
