@@ -31,5 +31,5 @@ RUN touch database/database.sqlite && chmod -R 777 database storage bootstrap/ca
 ENV PORT=10000
 EXPOSE ${PORT}
 
-# Run migrations and start server
-CMD php artisan key:generate --force && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=${PORT}
+# Run migrations, seed default data, and start server
+CMD php artisan key:generate --force && php artisan migrate --force --seed && php artisan serve --host=0.0.0.0 --port=${PORT}
