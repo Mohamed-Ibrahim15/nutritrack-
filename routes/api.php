@@ -21,6 +21,10 @@ use App\Models\User;
 // ── Health check ────────────────────────────────────────────────────────────
 Route::get('/test', fn () => response()->json(['message' => 'API is working', 'version' => '2.0']));
 
+// ── Public Content (Advice & Articles) ───────────────────────────────────────
+Route::get('/advice',       [AdviceController::class, 'index']);
+Route::get('/advice/{id}',  [AdviceController::class, 'show']);
+
 // ── AI Assistant (Public / Guest & Authenticated with optional token) ──────
 Route::post('/assistant', [AssistantController::class, 'chat']);
 
@@ -89,10 +93,6 @@ Route::middleware('auth:sanctum')->group(function () {
     // Feedback
     Route::get('/feedback',  [FeedbackController::class, 'index']);
     Route::post('/feedback', [FeedbackController::class, 'store']);
-
-    // Advice (read for users)
-    Route::get('/advice',       [AdviceController::class, 'index']);
-    Route::get('/advice/{id}',  [AdviceController::class, 'show']);
 
     // ── Admin-only routes ────────────────────────────────────────────────────
     Route::middleware('admin')->prefix('admin')->group(function () {
